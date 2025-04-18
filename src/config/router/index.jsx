@@ -1,11 +1,16 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
 import Homepage from "../../views/homepage";
+import Uploadpage from "../../views/uploadJSON";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Homepage />,
   },
+  {
+    path: "/AjouterJSON",
+    element: <Uploadpage />,
+  }
 ]);
 
 const Routes = () => {
