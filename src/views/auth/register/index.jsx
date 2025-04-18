@@ -16,15 +16,8 @@ const RegisterForm = () => {
       setError("Tous les champs sont requis!");
     } else if (password !== confirmPassword) {
       setError("Les mots de passe ne correspondent pas!");
-    } else if (!agreeTerms) {
-      setError("Vous devez accepter les conditions d'utilisation!");
-    } else {
+    }  else {
       setError("");
-      console.log("Prénom:", firstName);
-      console.log("Nom:", lastName);
-      console.log("Email:", email);
-      console.log("Mot de passe:", password);
-      console.log("Conditions acceptées:", agreeTerms);
     }
   };
 
