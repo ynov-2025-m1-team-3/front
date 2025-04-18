@@ -3,6 +3,7 @@ import Homepage from "../../views/homepage";
 import Uploadpage from "../../views/uploadJSON";
 import Login from "../../views/auth/login";
 import Register from "../../views/auth/register";
+import FeedBack from "../../views/feedback";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register />,
+  },
+  {
+    path: "/feedback",
+    element: <FeedBack />,
   }
 
 ]);

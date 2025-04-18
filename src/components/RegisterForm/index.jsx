@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Box, Button, TextField, Typography, Container } from "@mui/material";
 
 const RegisterForm = () => {
-  const [firstName, setFirstName] = useState("");
+  const [date, setdate] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -12,7 +12,7 @@ const RegisterForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (!firstName || !lastName || !email || !password || !confirmPassword) {
+    if (!date || !lastName || !email || !password || !confirmPassword) {
       setError("Tous les champs sont requis!");
     } else if (password !== confirmPassword) {
       setError("Les mots de passe ne correspondent pas!");
@@ -71,13 +71,13 @@ const RegisterForm = () => {
               margin="normal"
               required
               fullWidth
-              id="firstName"
+              id="date"
               label="Prénom"
-              name="firstName"
+              name="date"
               autoComplete="given-name"
               autoFocus
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
+              value={date}
+              onChange={(e) => setdate(e.target.value)}
               sx={textFieldStyle}
             />
             
