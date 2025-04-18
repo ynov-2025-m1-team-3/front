@@ -10,8 +10,6 @@ const LoginForm = () => {
       setError("Both fields are required!");
     } else {
       setError("");
-      console.log("Email:", email);
-      console.log("Mot de passe:", password);
     }
   };
   return (

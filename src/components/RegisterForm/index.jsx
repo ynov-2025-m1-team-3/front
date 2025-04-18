@@ -18,10 +18,6 @@ const RegisterForm = () => {
       setError("Les mots de passe ne correspondent pas!");
     } else {
       setError("");
-      console.log("Prénom:", firstName);
-      console.log("Nom:", lastName);
-      console.log("Email:", email);
-      console.log("Mot de passe:", password);
     }
   };
 
