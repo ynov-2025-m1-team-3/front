@@ -1,48 +1,48 @@
-import React, { useState } from 'react';
-import { Box, Button, TextField, Typography, Container } from '@mui/material';
+import React, { useState } from "react";
+import { Box, Button, TextField, Typography, Container } from "@mui/material";
 
 const RegisterForm = () => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [error, setError] = useState('');
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     if (!firstName || !lastName || !email || !password || !confirmPassword) {
-      setError('Tous les champs sont requis!');
+      setError("Tous les champs sont requis!");
     } else if (password !== confirmPassword) {
-      setError('Les mots de passe ne correspondent pas!');
+      setError("Les mots de passe ne correspondent pas!");
     } else if (!agreeTerms) {
-      setError('Vous devez accepter les conditions d\'utilisation!');
+      setError("Vous devez accepter les conditions d'utilisation!");
     } else {
-      setError('');
-      console.log('Prénom:', firstName);
-      console.log('Nom:', lastName);
-      console.log('Email:', email);
-      console.log('Mot de passe:', password);
-      console.log('Conditions acceptées:', agreeTerms);
+      setError("");
+      console.log("Prénom:", firstName);
+      console.log("Nom:", lastName);
+      console.log("Email:", email);
+      console.log("Mot de passe:", password);
+      console.log("Conditions acceptées:", agreeTerms);
     }
   };
 
   const textFieldStyle = {
-    '& .MuiOutlinedInput-root': {
-      backgroundColor: '#ffffff',
-      '& fieldset': {
-        borderColor: '#20b4dc',
+    "& .MuiOutlinedInput-root": {
+      backgroundColor: "#ffffff",
+      "& fieldset": {
+        borderColor: "#20b4dc",
       },
-      '&.Mui-focused fieldset': {
-        borderColor: '#20b4dc',
+      "&.Mui-focused fieldset": {
+        borderColor: "#20b4dc",
       }
     },
-    '& .MuiInputLabel-root': {
-      color: '#20b4dc',
+    "& .MuiInputLabel-root": {
+      color: "#20b4dc",
     },
-    '& .MuiInputLabel-root.Mui-focused': {
-      color: '#20b4dc',
+    "& .MuiInputLabel-root.Mui-focused": {
+      color: "#20b4dc",
     },
     mb: 2
   };
@@ -51,17 +51,17 @@ const RegisterForm = () => {
     <Container component="main" maxWidth="xs">
       <Box
         sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          backgroundColor: 'background.paper',
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          backgroundColor: "background.paper",
           borderRadius: 1,
           boxShadow: 3,
           p: 3,
         }}
       >
-        <Typography variant="h3" gutterBottom sx={{color: '#20b4dc'}}>
+        <Typography variant="h3" gutterBottom sx={{color: "#20b4dc"}}>
           Inscription
         </Typography>
         
@@ -71,8 +71,8 @@ const RegisterForm = () => {
           </Typography>
         )}
 
-        <form onSubmit={handleSubmit} style={{ width: '100%' }}>
-          <Box sx={{ display: 'flex', gap: 2 }}>
+        <form onSubmit={handleSubmit} style={{ width: "100%" }}>
+          <Box sx={{ display: "flex", gap: 2 }}>
             <TextField
               variant="outlined"
               margin="normal"
@@ -155,8 +155,8 @@ const RegisterForm = () => {
             sx={{ 
               mt: 1,
               mb: 2,
-              backgroundColor: '#20b4dc',
-              '&:hover': { backgroundColor: '#1a8bbd' }
+              backgroundColor: "#20b4dc",
+              "&:hover": { backgroundColor: "#1a8bbd" }
             }}
           >
             S'inscrire

@@ -1,20 +1,20 @@
-import React, { useState } from 'react';
-import { Box, Button, TextField, Typography, Container } from '@mui/material';
+import React, { useState } from "react";
+import { Box, Button, TextField, Typography, Container } from "@mui/material";
 
 const LoginForm = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     if (!email || !password) {
-      setError('Both fields are required!');
+      setError("Both fields are required!");
     } else {
-      setError('');
-      console.log('Email:', email);
-      console.log('Mot de passe:', password);
+      setError("");
+      console.log("Email:", email);
+      console.log("Mot de passe:", password);
     }
   };
 
@@ -22,17 +22,17 @@ const LoginForm = () => {
     <Container component="main" maxWidth="xs">
       <Box
         sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          backgroundColor: 'background.paper',
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          backgroundColor: "background.paper",
           borderRadius: 1,
           boxShadow: 3,
           p: 3,
         }}
       >
-        <Typography variant="h3" gutterBottom sx={{color: '#20b4dc'}}>
+        <Typography variant="h3" gutterBottom sx={{color: "#20b4dc"}}>
           Connexion
         </Typography>
         
@@ -42,7 +42,7 @@ const LoginForm = () => {
           </Typography>
         )}
 
-        <form onSubmit={handleSubmit} style={{ width: '100%' }}>
+        <form onSubmit={handleSubmit} style={{ width: "100%" }}>
           <TextField
             variant="outlined"
             margin="normal"
@@ -57,20 +57,20 @@ const LoginForm = () => {
             onChange={(e) => setEmail(e.target.value)}
             sx={{ 
               mb: 2,
-              '& .MuiOutlinedInput-root': {
-                backgroundColor: '#ffffff',
-                '& fieldset': {
-                  borderColor: '#20b4dc',
+              "& .MuiOutlinedInput-root": {
+                backgroundColor: "#ffffff",
+                "& fieldset": {
+                  borderColor: "#20b4dc",
                 },
-                '&.Mui-focused fieldset': {
-                  borderColor: '#20b4dc',
+                "&.Mui-focused fieldset": {
+                  borderColor: "#20b4dc",
                 }
               },
-              '& .MuiInputLabel-root': {
-                color: '#20b4dc',
+              "& .MuiInputLabel-root": {
+                color: "#20b4dc",
               },
-              '& .MuiInputLabel-root.Mui-focused': {
-                color: '#20b4dc',
+              "& .MuiInputLabel-root.Mui-focused": {
+                color: "#20b4dc",
               }
             }}
           />
@@ -88,20 +88,20 @@ const LoginForm = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             sx={{ 
-              '& .MuiOutlinedInput-root': {
-                backgroundColor: '#ffffff',
-                '& fieldset': {
-                  borderColor: '#20b4dc',
+              "& .MuiOutlinedInput-root": {
+                backgroundColor: "#ffffff",
+                "& fieldset": {
+                  borderColor: "#20b4dc",
                 },
-                '&.Mui-focused fieldset': {
-                  borderColor: '#20b4dc',
+                "&.Mui-focused fieldset": {
+                  borderColor: "#20b4dc",
                 }
               },
-              '& .MuiInputLabel-root': {
-                color: '#20b4dc',
+              "& .MuiInputLabel-root": {
+                color: "#20b4dc",
               },
-              '& .MuiInputLabel-root.Mui-focused': {
-                color: '#20b4dc',
+              "& .MuiInputLabel-root.Mui-focused": {
+                color: "#20b4dc",
               }
             }}
           />
@@ -113,8 +113,8 @@ const LoginForm = () => {
             sx={{ 
               mt: 3,
               mb: 2,
-              backgroundColor: '#20b4dc',
-              '&:hover': { backgroundColor: '#1a8bbd' }
+              backgroundColor: "#20b4dc",
+              "&:hover": { backgroundColor: "#1a8bbd" }
             }}
           >
             Se connecter
