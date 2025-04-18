@@ -8,7 +8,7 @@ const router = createBrowserRouter([
     element: <Homepage />,
   },
   {
-    path: "/AjouterJSON",
+    path: "/upload-json",
     element: <Uploadpage />,
   }
 ]);
