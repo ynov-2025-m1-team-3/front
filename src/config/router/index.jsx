@@ -7,7 +7,7 @@ import Register from "../../views/auth/register";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Homepage />, 
+    element: <Homepage />,
   },
   {
     path: "/upload-json",
