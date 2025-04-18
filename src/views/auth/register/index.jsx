@@ -4,7 +4,6 @@ function Register() {
 
   return (
       <RegisterForm />
-    
   );
 }
 
