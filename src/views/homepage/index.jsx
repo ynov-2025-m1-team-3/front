@@ -1,48 +1,75 @@
-import { Box, Button, Typography } from '@mui/material'
+import { Box, Button, Typography } from "@mui/material";
+import background_homepage from "../../assets/bg-home.png";
+import { useNavigate } from "react-router-dom";
 
 const Homepage = () => {
+  const navigate = useNavigate();
+
   return (
-    <Box display="flex" height="100vh">
-      {/* Left Section */}
+    <Box
+      display="flex"
+      height="100vh"
+      width="100%"
+      bgcolor="#f5f5f5"
+    >
       <Box
         flex={1}
         display="flex"
         flexDirection="column"
         justifyContent="center"
         alignItems="center"
-        bgcolor="#f0f0f0"
-        p={4}
+        textAlign="center"
+        px={4}
       >
-        <Typography variant="h2" gutterBottom>
-          Welcome to Our Appli
+        <Typography
+          variant="h2"
+          sx={{
+            fontWeight: 700,
+            color: "#111",
+            fontSize: { xs: "2.5rem", md: "4rem", color: "#20b4dc", fontWeight: "bold"  ,fontFamily: "Roboto, sans-serif"},
+          }}
+        >
+          FeedPulse
         </Typography>
-        <Button variant="contained" size="large">
-          Login
+
+        <Typography
+          variant="h6"
+          sx={{ color: "#666", fontWeight: "lighter", mt: 1, }}
+        >
+          Groupe 3
+        </Typography>
+
+        <Button
+          variant="contained"
+          size="large"
+          sx={{ mt: 4, px: 4, py: 1.5, borderRadius: 2, backgroundColor: "#20b4dc" }}
+          onClick={() => navigate("/login")}
+        >
+          LOGIN
         </Button>
       </Box>
 
-      {/* Right Section */}
       <Box
         flex={1}
         display="flex"
-        flexWrap="wrap"
         justifyContent="center"
         alignItems="center"
-        bgcolor="#e0e0e0"
-        p={2}
+        sx={{
+          overflow: "hidden",
+        }}
       >
-        {[1, 2, 3, 4].map((n) => (
-          <Box
-            key={n}
-            component="img"
-            src={`https://via.placeholder.com/150?text=Image+${n}`}
-            alt={`Placeholder ${n}`}
-            sx={{ m: 2, borderRadius: 2 }}
-          />
-        ))}
+        <Box
+          component="img"
+          src={background_homepage}
+          alt="Design inspiration"
+          sx={{
+            width: "100%",
+            borderRadius: "100px",
+          }}
+        />
       </Box>
     </Box>
-  )
-}
+  );
+};
 
-export default Homepage
+export default Homepage;
