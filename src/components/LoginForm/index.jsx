@@ -1,17 +1,16 @@
-import React, { useState } from "react";
 import { Box, Button, TextField, Typography, Container } from "@mui/material";
+import useLogin from "@hooks/useLogin";
+
 const LoginForm = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if (!email || !password) {
-      setError("Both fields are required!");
-    } else {
-      setError("");
-    }
-  };
+  const {
+    email,
+    setEmail,
+    password,
+    setPassword,
+    error,
+    handleSubmit
+  } = useLogin();
+
   return (
     <Container component="main" maxWidth="xs">
       <Box
