@@ -1,16 +1,8 @@
-import { useState } from 'react'
-import Routes from './config/router'
-import './App.css'
-import Dashboard from 'views/dashboard';
+import './App.css';
+import Routes from './config/router'; 
 
 function App() {
-
-  return (
-    <>
-      <Routes />
-      <Dashboard />
-    </>
-  )
+  return <Routes />; 
 }
 
-export default App
+export default App;
