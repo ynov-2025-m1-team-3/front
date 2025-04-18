@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Box, Button, TextField, Typography, Container } from "@mui/material";
+import { Link } from "react-router-dom";
+import "@fontsource/roboto";
 
 const RegisterForm = () => {
-  const [date, setdate] = useState("");
+  const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -12,7 +14,7 @@ const RegisterForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (!date || !lastName || !email || !password || !confirmPassword) {
+    if (!firstName || !lastName || !email || !password || !confirmPassword) {
       setError("Tous les champs sont requis!");
     } else if (password !== confirmPassword) {
       setError("Les mots de passe ne correspondent pas!");
@@ -22,6 +24,7 @@ const RegisterForm = () => {
   };
 
   const textFieldStyle = {
+    fontFamily: "Roboto",
     "& .MuiOutlinedInput-root": {
       backgroundColor: "#ffffff",
       "& fieldset": {
@@ -44,20 +47,22 @@ const RegisterForm = () => {
     <Container component="main" maxWidth="xs">
       <Box
         sx={{
+          fontFamily: "Roboto",
+          fontWeight: "bold",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
           backgroundColor: "background.paper",
-          borderRadius: 1,
+          borderRadius: 7,
           boxShadow: 3,
           p: 3,
         }}
       >
-        <Typography variant="h3" gutterBottom sx={{color: "#20b4dc"}}>
+        <Typography variant="h4" gutterBottom sx={{ color: "#20b4dc" }}>
           Inscription
         </Typography>
-        
+
         {error && (
           <Typography color="error" variant="body2" sx={{ mb: 2 }}>
             {error}
@@ -71,16 +76,16 @@ const RegisterForm = () => {
               margin="normal"
               required
               fullWidth
-              id="date"
+              id="firstName"
               label="Prénom"
-              name="date"
+              name="firstName"
               autoComplete="given-name"
               autoFocus
-              value={date}
-              onChange={(e) => setdate(e.target.value)}
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
               sx={textFieldStyle}
             />
-            
+
             <TextField
               variant="outlined"
               margin="normal"
@@ -95,7 +100,7 @@ const RegisterForm = () => {
               sx={textFieldStyle}
             />
           </Box>
-          
+
           <TextField
             variant="outlined"
             margin="normal"
@@ -109,7 +114,7 @@ const RegisterForm = () => {
             onChange={(e) => setEmail(e.target.value)}
             sx={textFieldStyle}
           />
-          
+
           <TextField
             variant="outlined"
             margin="normal"
@@ -124,7 +129,7 @@ const RegisterForm = () => {
             onChange={(e) => setPassword(e.target.value)}
             sx={textFieldStyle}
           />
-          
+
           <TextField
             variant="outlined"
             margin="normal"
@@ -139,16 +144,35 @@ const RegisterForm = () => {
             onChange={(e) => setConfirmPassword(e.target.value)}
             sx={textFieldStyle}
           />
-          
-          
+
+          <Typography
+            variant="body2"
+            sx={{
+              mt: 2,
+              mb: 1,
+              textAlign: "center",
+              fontFamily: "Roboto",
+              color: "black"
+            }}
+          >
+            Déjà un compte ?{" "}
+            <Link
+              to="/login"
+              style={{ color: "#20b4dc", textDecoration: "none", fontFamily: "Roboto" }}
+            >
+              Se connecter
+            </Link>
+          </Typography>
+
           <Button
             type="submit"
             variant="contained"
-            fullWidth 
-            sx={{ 
+            fullWidth
+            sx={{
               mt: 1,
               mb: 2,
               backgroundColor: "#20b4dc",
+              fontFamily: "Roboto",
               "&:hover": { backgroundColor: "#1a8bbd" }
             }}
           >
