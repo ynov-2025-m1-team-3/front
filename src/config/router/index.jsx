@@ -3,6 +3,7 @@ import Homepage from "../../views/homepage";
 import Uploadpage from "../../views/uploadJSON";
 import Login from "../../views/auth/login";
 import Register from "../../views/auth/register";
+import Dashboard from "../../views/dashboard";
 
 const router = createBrowserRouter([
   {
@@ -20,8 +21,11 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register />,
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
   }
-
 ]);
 
 const Routes = () => {
