@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { api } from "@lib/fetch";
+import api from "@lib/fetch";
 
 const useLogin = () => {
   const [email, setEmail] = useState("");
