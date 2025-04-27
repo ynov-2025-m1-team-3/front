@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { redirect } from "react-router-dom";
 import api from "@lib/fetch";
 
 const useRegister = () => {
@@ -24,7 +25,11 @@ const useRegister = () => {
         email,
         password,
       });
-      console.log("response", response);
+
+      /**TODO : Message alert quand on se connecte avec toaster*/
+
+
+      redirect("/login");
    }
 
    return {
