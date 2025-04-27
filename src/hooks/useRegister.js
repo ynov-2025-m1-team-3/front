@@ -20,15 +20,12 @@ const useRegister = () => {
       } else {
         setError("");
       }
-      const response = await api.post("/auth/register", {
+      await api.post("/auth/register", {
         name,
         email,
         password,
       });
-
       /**TODO : Message alert quand on se connecte avec toaster*/
-
-
       redirect("/login");
    }
 
