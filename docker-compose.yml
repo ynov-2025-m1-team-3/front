@@ -1,0 +1,10 @@
+services:
+  webapp:
+    environment: 
+      VITE_API_URL: "${VITE_API_URL}"
+    build: .
+    ports:
+      - "80:80" #HTTP
+      - "443:443" #HTTPS 
+    container_name: pulsefeed-frontend
+    restart: unless-stopped
