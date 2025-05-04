@@ -1,74 +1,34 @@
-import { Box, Button, Typography } from "@mui/material";
-import background_homepage from "../../assets/bg-home.png";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import { Box, Typography, Container, Button } from "@mui/material";
+import { Link } from "react-router-dom";
+import FeedbackTable from "../../components/data/rowData";
+import UploadFileIcon from "@mui/icons-material/UploadFile";
+import logo from "../../assets/logo.png";
 
 const Homepage = () => {
-  const navigate = useNavigate();
-
   return (
-    <Box
-      display="flex"
-      height="100vh"
-      width="100%"
-      bgcolor="#f5f5f5"
-    >
-      <Box
-        flex={1}
-        display="flex"
-        flexDirection="column"
-        justifyContent="center"
-        alignItems="center"
-        textAlign="center"
-        px={4}
-      >
-        <Typography
-          variant="h2"
-          sx={{
-            fontWeight: 700,
-            color: "#111",
-            fontSize: { xs: "2.5rem", md: "4rem", color: "#20b4dc", fontWeight: "bold"  ,fontFamily: "Roboto, sans-serif"},
-          }}
-        >
-          FeedPulse
+    <Container maxWidth="lg">
+      <Box sx={{ my: 4, textAlign: "center" }}>
+        <img src={logo} alt="Logo" style={{ width: "200px", margin: "20px auto", display: "block" }} />
+        <Typography variant="h4" gutterBottom sx={{ color: "#20b4dc", fontWeight: "bold" }}>
+          Tableau de bord FeedPulse
         </Typography>
-
-        <Typography
-          variant="h6"
-          sx={{ color: "#666", fontWeight: "lighter", mt: 1, }}
-        >
-          Groupe 3
-        </Typography>
-
-        <Button
-          variant="contained"
-          size="large"
-          sx={{ mt: 4, px: 4, py: 1.5, borderRadius: 2, backgroundColor: "#20b4dc" }}
-          onClick={() => navigate("/login")}
-        >
-          LOGIN
-        </Button>
+        
+        <Box sx={{ display: "flex", justifyContent: "flex-end", mb: 2 }}>
+          <Button 
+            component={Link} 
+            to="/upload-json" 
+            variant="contained" 
+            startIcon={<UploadFileIcon />}
+            sx={{ backgroundColor: "#20b4dc", "&:hover": { backgroundColor: "#1a8bbd" } }}
+          >
+            Uploader un nouveau fichier
+          </Button>
+        </Box>
+        
+        <FeedbackTable />
       </Box>
-
-      <Box
-        flex={1}
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        sx={{
-          overflow: "hidden",
-        }}
-      >
-        <Box
-          component="img"
-          src={background_homepage}
-          alt="Design inspiration"
-          sx={{
-            width: "100%",
-            borderRadius: "100px",
-          }}
-        />
-      </Box>
-    </Box>
+    </Container>
   );
 };
 
