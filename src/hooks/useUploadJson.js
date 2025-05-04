@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "@lib/fetch";
@@ -5,6 +6,12 @@ import Cookies from "js-cookie";
 
 const useUploadJson = () => {
   const navigate = useNavigate();
+=======
+import { useState } from "react";
+import api from "@lib/fetch";
+
+const useUploadJson = () => {
+>>>>>>> 538100b (feature upload json + fix route)
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
@@ -12,6 +19,7 @@ const useUploadJson = () => {
   const [fileName, setFileName] = useState(null);
   const [dragOver, setDragOver] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
+<<<<<<< HEAD
   
   // Check for authentication when component mounts
   useEffect(() => {
@@ -23,6 +31,8 @@ const useUploadJson = () => {
       }, 2000);
     }
   }, [navigate]);
+=======
+>>>>>>> 538100b (feature upload json + fix route)
 
   const resetState = () => {
     setError(null);
@@ -72,6 +82,7 @@ const useUploadJson = () => {
       return;
     }
 
+<<<<<<< HEAD
     // Check for authentication token
     const token = Cookies.get("token");
     console.log("Token:", token);
@@ -83,6 +94,8 @@ const useUploadJson = () => {
       return;
     }
 
+=======
+>>>>>>> 538100b (feature upload json + fix route)
     setLoading(true);
     setUploadProgress(10);
     setError(null);
@@ -93,16 +106,21 @@ const useUploadJson = () => {
       
       setUploadProgress(30);
       
+<<<<<<< HEAD
       // Add token to request headers
       const headers = {
         Authorization: `Bearer ${token}`
       };
       
       const response = await api.post("/api/feedback", dataToSend, headers);
+=======
+      const response = await api.post("/api/feedback", dataToSend);
+>>>>>>> 538100b (feature upload json + fix route)
       
       setUploadProgress(100);
       setSuccess(true);
       setLoading(false);
+<<<<<<< HEAD
       
       // Store data in localStorage for homepage display
       localStorage.setItem("uploadedFeedback", JSON.stringify(response));
@@ -110,13 +128,20 @@ const useUploadJson = () => {
       return response;
     } catch (err) {
       console.error("Upload error:", err);
+=======
+      return response;
+    } catch (err) {
+>>>>>>> 538100b (feature upload json + fix route)
       setError(err.message || "Une erreur s'est produite lors de l'envoi des données");
       setLoading(false);
       setUploadProgress(0);
     }
   };
 
+<<<<<<< HEAD
   // Return all your states and functions
+=======
+>>>>>>> 538100b (feature upload json + fix route)
   return {
     loading,
     error,
