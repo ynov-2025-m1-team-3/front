@@ -16,7 +16,7 @@ const useLogin = () => {
       setError("");
     }
 
-    const response = await api.post("/auth/login", {
+    const response = await api.post("/api/auth/login", {
       email,
       password,
     });
@@ -34,7 +34,7 @@ const useLogin = () => {
         sameSite: "Strict",
         expires: 7,
       });
-      navigate("/dashboard");
+      navigate("/upload-json");
     }
   };
 
