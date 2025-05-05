@@ -33,9 +33,9 @@ const Dashboard = () => {
         
         const sentiment = feedback.sentiment || Math.random();
         
-        if (sentiment > 0.6) {
+        if (sentiment > 0.2) {
           sentimentData[0].value++; 
-        } else if (sentiment < 0.4) {
+        } else if (sentiment < 0.2 && sentiment > -0.2) {
           sentimentData[2].value++; 
         } else {
           sentimentData[1].value++;
