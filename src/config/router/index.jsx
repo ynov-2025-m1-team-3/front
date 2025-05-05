@@ -8,11 +8,11 @@ import Landingpage from "../../views/landingpage";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/home",
     element: <Homepage />,
   },
   {
-    path: "/welcome",
+    path: "/",
     element: <Landingpage />,
   },
   {

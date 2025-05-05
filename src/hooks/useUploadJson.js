@@ -104,8 +104,7 @@ const useUploadJson = () => {
       setSuccess(true);
       setLoading(false);
       
-      // Store data in localStorage for homepage display
-      localStorage.setItem("uploadedFeedback", JSON.stringify(response));
+      navigate("/dashboard", { state: { data: response.data } });
       
       return response;
     } catch (err) {
