@@ -26,7 +26,7 @@ export default function TemporaryDrawer() {
   };
 
   const drawerItems1 = [
-    { text: "Welcome", icon: <CottageIcon />, route: "/welcome" },
+    { text: "Welcome", icon: <CottageIcon />, route: "/" },
     { text: "Login", icon: <LoginIcon />, route: "/login" },
     { text: "Register", icon: <PersonAddIcon />, route: "/register" },
   ];
