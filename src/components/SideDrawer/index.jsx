@@ -26,13 +26,13 @@ export default function TemporaryDrawer() {
   };
 
   const drawerItems1 = [
-    { text: "Welcome", icon: <CottageIcon />, route: "/welcome" },
+    { text: "Welcome", icon: <CottageIcon />, route: "/" },
     { text: "Login", icon: <LoginIcon />, route: "/login" },
     { text: "Register", icon: <PersonAddIcon />, route: "/register" },
   ];
 
   const drawerItems2 = [
-    { text: "Upload JSON", icon: <UploadFileIcon />, route: "/upload" },
+    { text: "Upload JSON", icon: <UploadFileIcon />, route: "/upload-json" },
     { text: "Dashboard", icon: <DashboardIcon />, route: "/dashboard" },
     { text: "FeedbackViewer", icon: <ChatBubbleIcon />, route: "/feedback" },
   ];

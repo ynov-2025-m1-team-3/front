@@ -9,11 +9,11 @@ import Dashboard from "@views/dashboard";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/feedbackviewer",
     element: <Homepage />,
   },
   {
-    path: "/welcome",
+    path: "/",
     element: <Landingpage />,
   },
   {
