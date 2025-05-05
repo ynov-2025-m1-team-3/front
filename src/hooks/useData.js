@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import api from "@lib/fetch";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
@@ -9,7 +9,7 @@ const useData = () => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  const fetchFeedbacks = async () => {
+  const fetchFeedbacks = useCallback(async () => {
     try {
       setLoading(true);
       
@@ -44,12 +44,12 @@ const useData = () => {
       setError(err.message || "Une erreur est survenue lors de la récupération des données");
       setLoading(false);
     }
-  };
+  }, [navigate]);
 
   // Charger les données au montage du composant
   useEffect(() => {
     fetchFeedbacks();
-  }, []);
+  }, [fetchFeedbacks]);
 
   // Fonction pour forcer le rafraîchissement des données
   const refreshFeedbacks = () => {
