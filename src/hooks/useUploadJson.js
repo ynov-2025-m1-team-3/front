@@ -109,7 +109,7 @@ const useUploadJson = () => {
       setLoading(false);
       
       navigate("/dashboard", { state: { data: response.data } });
-      
+      toast.success("fichier bien envoyés à la base de données")
       return response;
     } catch (err) {
       console.error("Upload error:", err);
