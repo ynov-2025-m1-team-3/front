@@ -31,21 +31,7 @@ async function request(endpoint, { method = "GET", body, headers = {} } = {}) {
   }
 }
 
-export async function getProfile() {
-  const token = localStorage.getItem("token");
 
-  const res = await fetch("http://localhost:3000/api/me", {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-
-  if (!res.ok) {
-    throw new Error("Non autorisé");
-  }
-
-  return res.json();
-}
 
 const api = { 
   async get(endpoint, headers = {}) {
