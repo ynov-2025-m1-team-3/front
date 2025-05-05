@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Box, Container, Grid } from "@mui/material";
-import Navbar from "../../components/navbar";
-import DataCard from "../../components/Datacard";
+import Navbar from "@/components/Navbar";
+import DataCard from "@/components/Datacard";
 import { Typography } from "@mui/material";
 
 const dataCards = [
