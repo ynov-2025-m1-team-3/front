@@ -49,6 +49,7 @@ const useData = () => {
   // Charger les données au montage du composant
   useEffect(() => {
     fetchFeedbacks();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Fonction pour forcer le rafraîchissement des données

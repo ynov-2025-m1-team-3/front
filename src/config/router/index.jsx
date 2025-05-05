@@ -1,22 +1,28 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
-import Homepage from "../../views/homepage";
-import Uploadpage from "../../views/uploadJSON";
-import Login from "../../views/auth/login";
-import Register from "../../views/auth/register";
-import Landingpage from "../../views/landingpage";
+import Homepage from "@views/homepage";
+import Uploadpage from "@views/uploadJSON";
+import Login from "@views/auth/login";
+import Register from "@views/auth/register";
+import PrivateRoute from "@components/PrivateRoute";
+import Landingpage from "@views/landingpage";
+import Dashboard from "@views/dashboard";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/feedbackviewer",
     element: <Homepage />,
   },
   {
-    path: "/welcome",
+    path: "/",
     element: <Landingpage />,
   },
   {
     path: "/upload-json",
-    element: <Uploadpage />,
+    element: (
+      <PrivateRoute>
+        <Uploadpage />
+      </PrivateRoute>
+    ),
   },
   { 
     path: "/login",
@@ -25,8 +31,11 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register />,
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
   }
-
 ]);
 
 const Routes = () => {

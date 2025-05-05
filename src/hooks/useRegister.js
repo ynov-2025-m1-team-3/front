@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 import api from "@lib/fetch";
 
 const useRegister = () => {
@@ -28,6 +29,7 @@ const useRegister = () => {
     });
 
     navigate("/login");
+    toast.success("user registered")
   };
 
   return {

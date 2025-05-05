@@ -111,6 +111,13 @@ const LoginForm = () => {
           >
             Se connecter
           </Button>
+
+          <a href="/register" style={{ textDecoration: "none", color: "#20b4dc" }}>
+            <Typography variant="body2" align="center">
+              Pas encore de compte ? Inscrivez-vous ici.
+            </Typography>
+          </a>
+          
         </form>
       </Box>
     </Container>
