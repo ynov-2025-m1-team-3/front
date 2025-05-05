@@ -31,6 +31,8 @@ async function request(endpoint, { method = "GET", body, headers = {} } = {}) {
   }
 }
 
+
+
 const api = { 
   async get(endpoint, headers = {}) {
     return request(endpoint, { method: "GET", headers });
