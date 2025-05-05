@@ -77,7 +77,6 @@ const useUploadJson = () => {
 
     // Check for authentication token
     const token = Cookies.get("token");
-    console.log("Token:", token);
     if (!token) {
       setError("Vous devez être connecté pour télécharger des données");
       setTimeout(() => {
