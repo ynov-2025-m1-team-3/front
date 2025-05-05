@@ -30,9 +30,10 @@ const useLogin = () => {
 
     if (response.token) {
       Cookies.set("token", response.token, {
-        secure: true,
-        sameSite: "Strict",
+        secure: false,
+        sameSite: "Lax",
         expires: 7,
+        path: "/",
       });
       navigate("/upload-json");
     }
