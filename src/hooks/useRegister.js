@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 import api from "@lib/fetch";
 
 const useRegister = () => {
@@ -26,7 +27,7 @@ const useRegister = () => {
       email,
       password,
     });
-
+    
     navigate("/login");
   };
 
