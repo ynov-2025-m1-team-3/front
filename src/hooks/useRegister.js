@@ -21,7 +21,7 @@ const useRegister = () => {
     } else {
       setError("");
     }
-    await api.post("/auth/register", {
+    await api.post("/api/auth/register", {
       name,
       email,
       password,
