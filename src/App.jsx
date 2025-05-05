@@ -1,13 +1,8 @@
-import Routes from './config/router'
-import './App.css'
+import Routes from "./config/router"
+import "./App.css"
 
 function App() {
-
-  return (
-    <>
-      <Routes />
-    </>
-  )
+  return <Routes />; 
 }
 
-export default App
+export default App;
