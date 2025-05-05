@@ -6,6 +6,7 @@ import Register from "@views/auth/register";
 import PrivateRoute from "@components/PrivateRoute";
 import Landingpage from "@views/landingpage";
 import Dashboard from "@views/dashboard";
+import Profile from "@views/profile";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,14 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <Dashboard />,
+  },
+  {
+    path: "/profile",
+    element: (
+      
+        <Profile />
+      
+    ),
   }
 ]);
 
