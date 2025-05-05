@@ -4,15 +4,16 @@ import Uploadpage from "../../views/uploadJSON";
 import Login from "../../views/auth/login";
 import Register from "../../views/auth/register";
 import PrivateRoute from "../../components/PrivateRoute";
+import Landingpage from "../../views/landingpage";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element:(
-      <PrivateRoute> 
-        <Homepage />
-      </PrivateRoute>
-    ),
+    element: <Homepage />,
+  },
+  {
+    path: "/welcome",
+    element: <Landingpage />,
   },
   {
     path: "/upload-json",
