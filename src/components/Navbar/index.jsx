@@ -3,6 +3,7 @@ import { Box, TextField, IconButton, Paper, } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import WarningIcon from "@mui/icons-material/Warning";
 import logo from "../../assets/logo.png"; 
+import SideDrawer from "@/components/SideDrawer";
 
 const Navbar = ({ onSearch }) => {
   const [input, setInput] = useState("");
@@ -29,6 +30,7 @@ const Navbar = ({ onSearch }) => {
         borderRadius: 2,
       }}
     >
+      <SideDrawer />
       <Box component="img" src={logo} alt="logo" sx={{ height: 30 }}/>
       <Box sx={{ flex: 1, px: 2 }}>
         <TextField

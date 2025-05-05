@@ -3,6 +3,8 @@ import { Box, Typography, Paper, Button, LinearProgress, Alert } from "@mui/mate
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import SendIcon from "@mui/icons-material/Send";
 import useUploadJson from "@hooks/useUploadJson";
+import SideDrawer from "../../components/SideDrawer";
+
 
 const Jsonpage = () => {
   const {
@@ -19,6 +21,7 @@ const Jsonpage = () => {
   } = useUploadJson();
 
   return (
+  
     <Box
       display="flex"
       justifyContent="center"

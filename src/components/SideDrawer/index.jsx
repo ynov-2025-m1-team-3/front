@@ -32,7 +32,7 @@ export default function TemporaryDrawer() {
   ];
 
   const drawerItems2 = [
-    { text: "Upload JSON", icon: <UploadFileIcon />, route: "/upload" },
+    { text: "Upload JSON", icon: <UploadFileIcon />, route: "/upload-json" },
     { text: "Dashboard", icon: <DashboardIcon />, route: "/dashboard" },
     { text: "FeedbackViewer", icon: <ChatBubbleIcon />, route: "/feedback" },
   ];

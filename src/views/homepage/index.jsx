@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import FeedbackTable from "../../components/data/rowData";
 import UploadFileIcon from "@mui/icons-material/UploadFile";
 import logo from "../../assets/logo.png";
+import SideDrawer from "../../components/SideDrawer";
 
 const Homepage = () => {
   return (
@@ -13,6 +14,11 @@ const Homepage = () => {
         <Typography variant="h4" gutterBottom sx={{ color: "#20b4dc", fontWeight: "bold" }}>
           Tableau de bord FeedPulse
         </Typography>
+
+              <Box
+          sx={{ position: "fixed", top: 16, left: 16,}}>
+          <SideDrawer />
+        </Box>
         
         <Box sx={{ display: "flex", justifyContent: "flex-end", mb: 2 }}>
           <Button 

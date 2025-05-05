@@ -19,9 +19,7 @@ const router = createBrowserRouter([
   {
     path: "/upload-json",
     element: (
-      <PrivateRoute>
         <Uploadpage />
-      </PrivateRoute>
     ),
   },
   { 
