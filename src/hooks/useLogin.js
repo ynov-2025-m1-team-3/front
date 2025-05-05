@@ -21,7 +21,6 @@ const useLogin = () => {
       password,
     });
 
-    console.log("response", response);
     if (response.error) {
       setError(response.error);
     } else {
@@ -29,6 +28,7 @@ const useLogin = () => {
     }
 
     if (response.token) {
+
       Cookies.set("token", response.token, {
         secure: true,
         sameSite: "Strict",

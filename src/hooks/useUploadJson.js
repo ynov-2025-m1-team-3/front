@@ -5,6 +5,7 @@ import Cookies from "js-cookie";
 
 const useUploadJson = () => {
   const navigate = useNavigate();
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
@@ -12,6 +13,7 @@ const useUploadJson = () => {
   const [fileName, setFileName] = useState(null);
   const [dragOver, setDragOver] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
+
   
   // Check for authentication when component mounts
   useEffect(() => {
@@ -72,9 +74,9 @@ const useUploadJson = () => {
       return;
     }
 
+
     // Check for authentication token
     const token = Cookies.get("token");
-    console.log("Token:", token);
     if (!token) {
       setError("Vous devez être connecté pour télécharger des données");
       setTimeout(() => {
@@ -99,6 +101,7 @@ const useUploadJson = () => {
       };
       
       const response = await api.post("/api/feedback", dataToSend, headers);
+
       
       setUploadProgress(100);
       setSuccess(true);
@@ -110,12 +113,12 @@ const useUploadJson = () => {
       return response;
     } catch (err) {
       console.error("Upload error:", err);
+
       setError(err.message || "Une erreur s'est produite lors de l'envoi des données");
       setLoading(false);
       setUploadProgress(0);
     }
   };
-
   // Return all your states and functions
   return {
     loading,

@@ -1,10 +1,10 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
-import Homepage from "../../views/homepage";
-import Uploadpage from "../../views/uploadJSON";
-import Login from "../../views/auth/login";
-import Register from "../../views/auth/register";
-import Dashboard from "../../views/dashboard";
-import Landingpage from "../../views/landingpage";
+import Homepage from "@views/homepage";
+import Uploadpage from "@views/uploadJSON";
+import Login from "@views/auth/login";
+import Register from "@views/auth/register";
+import PrivateRoute from "@components/PrivateRoute";
+import Landingpage from "@views/landingpage";
 
 const router = createBrowserRouter([
   {
@@ -17,7 +17,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/upload-json",
-    element: <Uploadpage />,
+    element: (
+      <PrivateRoute>
+        <Uploadpage />
+      </PrivateRoute>
+    ),
   },
   { 
     path: "/login",

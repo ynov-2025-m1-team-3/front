@@ -45,6 +45,7 @@ const useUser = () => {
   // Charger les données utilisateur au montage du composant
   useEffect(() => {
     fetchCurrentUser();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Fonction pour se déconnecter
