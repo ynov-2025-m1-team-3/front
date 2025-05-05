@@ -27,8 +27,9 @@ const useRegister = () => {
       email,
       password,
     });
-    
+
     navigate("/login");
+    toast.success("user registered")
   };
 
   return {
