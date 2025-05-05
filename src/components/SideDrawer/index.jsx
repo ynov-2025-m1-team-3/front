@@ -16,10 +16,13 @@ import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import UploadFileIcon from "@mui/icons-material/UploadFile";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
+import LogoutIcon from '@mui/icons-material/Logout';
+import useLogin from "@/hooks/useLogin";
 
 export default function TemporaryDrawer() {
   const [open, setOpen] = React.useState(false);
   const navigate = useNavigate();
+  const { logout} = useLogin();
 
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
@@ -69,6 +72,12 @@ export default function TemporaryDrawer() {
             </ListItemButton>
           </ListItem>
         ))}
+        <ListItem disablePadding>
+          <ListItemButton onClick={logout}>
+            <ListItemIcon sx={{ color: "#20b4dc" }} ><LogoutIcon /></ListItemIcon>
+            <ListItemText primary="Logout" sx={{ color: "#20b4dc" }} />
+          </ListItemButton>
+        </ListItem>
       </List>
     </Box>
   );

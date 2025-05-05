@@ -41,6 +41,12 @@ const useLogin = () => {
     }
   };
 
+  const logout = () => {
+    Cookies.remove("token")
+    navigate("/login")
+    toast("logout successfully")
+  }
+
   return {
     email,
     setEmail,
@@ -48,6 +54,7 @@ const useLogin = () => {
     setPassword,
     error,
     handleSubmit,
+    logout
   };
 };
 
