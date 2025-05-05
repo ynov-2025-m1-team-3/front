@@ -21,7 +21,6 @@ const useLogin = () => {
       password,
     });
 
-    console.log("response", response);
     if (response.error) {
       setError(response.error);
     } else {
