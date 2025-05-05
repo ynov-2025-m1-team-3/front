@@ -1,25 +1,8 @@
-import React, { useState } from "react";
 import { Box, Button, TextField, Typography, Container } from "@mui/material";
+import useRegister from "@hooks/useRegister";
 
 const RegisterForm = () => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState("");
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    if (!firstName || !lastName || !email || !password || !confirmPassword) {
-      setError("Tous les champs sont requis!");
-    } else if (password !== confirmPassword) {
-      setError("Les mots de passe ne correspondent pas!");
-    } else {
-      setError("");
-    }
-  };
+  const { email, password, confirmPassword, error, setEmail, setPassword, setConfirmPassword, name, setName, handleSubmit } = useRegister()
 
   const textFieldStyle = {
     "& .MuiOutlinedInput-root": {
@@ -65,36 +48,19 @@ const RegisterForm = () => {
         )}
 
         <form onSubmit={handleSubmit} style={{ width: "100%" }}>
-          <Box sx={{ display: "flex", gap: 2 }}>
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="firstName"
-              label="Prénom"
-              name="firstName"
-              autoComplete="given-name"
-              autoFocus
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-              sx={textFieldStyle}
-            />
-            
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="lastName"
-              label="Nom"
-              name="lastName"
-              autoComplete="family-name"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-              sx={textFieldStyle}
-            />
-          </Box>
+          <TextField 
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            id="name"
+            label="Name"
+            autoComplete="username"
+            autoFocus
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            sx={textFieldStyle}
+          />
           
           <TextField
             variant="outlined"

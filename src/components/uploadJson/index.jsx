@@ -1,26 +1,22 @@
-import React, { useState } from "react";
-import { Box, Typography, Paper, Button } from "@mui/material";
+import React from "react";
+import { Box, Typography, Paper, Button, LinearProgress, Alert } from "@mui/material";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import SendIcon from "@mui/icons-material/Send";
+import useUploadJson from "@hooks/useUploadJson";
 
 const Jsonpage = () => {
-  const [fileName, setFileName] = useState(null);
-  const [dragOver, setDragOver] = useState(false);
-
-  const handleDrop = (e) => {
-    e.preventDefault();
-    setDragOver(false);
-    const file = e.dataTransfer.files[0];
-    if (file && file.type === "application/json") {
-      setFileName(file.name);
-    }
-  };
-
-  const handleFileChange = (e) => {
-    const file = e.target.files?.[0];
-    if (file && file.type === "application/json") {
-      setFileName(file.name);
-    }
-  };
+  const {
+    loading,
+    error,
+    success,
+    fileName,
+    dragOver,
+    uploadProgress,
+    setDragOver,
+    handleDrop,
+    handleFileChange,
+    uploadJson
+  } = useUploadJson();
 
   return (
     <Box
@@ -54,7 +50,12 @@ const Jsonpage = () => {
           ou
         </Typography>
 
-        <Button variant="contained" component="label" sx={{ mt: 2, backgroundColor: "#20b4dc" }}>
+        <Button 
+          variant="contained" 
+          component="label" 
+          sx={{ mt: 2, backgroundColor: "#20b4dc" }}
+          disabled={loading}
+        >
           Sélectionner un fichier
           <input
             type="file"
@@ -65,9 +66,46 @@ const Jsonpage = () => {
         </Button>
 
         {fileName && (
-          <Typography mt={2} variant="body2" color="success.main">
-            ✅ Fichier chargé : {fileName}
-          </Typography>
+          <Box mt={2}>
+            <Typography variant="body2" color="success.main">
+              ✅ Fichier chargé : {fileName}
+            </Typography>
+            
+            <Button
+              variant="contained"
+              startIcon={<SendIcon />}
+              onClick={uploadJson}
+              disabled={loading}
+              sx={{ 
+                mt: 2, 
+                backgroundColor: "#20b4dc",
+                "&:hover": { backgroundColor: "#1a8bbd" }
+              }}
+            >
+              Envoyer à la base de données
+            </Button>
+          </Box>
+        )}
+
+        {loading && (
+          <Box sx={{ width: "100%", mt: 2 }}>
+            <LinearProgress variant="determinate" value={uploadProgress} />
+            <Typography variant="body2" sx={{ mt: 1 }}>
+              Traitement en cours... {uploadProgress}%
+            </Typography>
+          </Box>
+        )}
+
+        {error && (
+          <Alert severity="error" sx={{ mt: 2 }}>
+            {error}
+          </Alert>
+        )}
+
+        {success && (
+          <Alert severity="success" sx={{ mt: 2 }}>
+            Données enregistrées avec succès dans la base de données!
+          </Alert>
         )}
       </Paper>
     </Box>
