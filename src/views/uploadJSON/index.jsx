@@ -32,7 +32,6 @@ const Uploadpage = () => {
         Téléchargez votre fichier JSON pour commencer à utiliser notre application.
         </Typography>
 
-
       <Jsonpage />
     </Box>
   );

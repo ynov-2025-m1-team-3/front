@@ -5,7 +5,6 @@ import SendIcon from "@mui/icons-material/Send";
 import useUploadJson from "@hooks/useUploadJson";
 import SideDrawer from "../../components/SideDrawer";
 
-
 const Jsonpage = () => {
   const {
     loading,
@@ -21,7 +20,6 @@ const Jsonpage = () => {
   } = useUploadJson();
 
   return (
-  
     <Box
       display="flex"
       justifyContent="center"
