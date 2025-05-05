@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "@lib/fetch";
 import Cookies from "js-cookie";
+import toast from "react-hot-toast";
 
 const useUploadJson = () => {
   const navigate = useNavigate();
@@ -106,7 +107,8 @@ const useUploadJson = () => {
       setUploadProgress(100);
       setSuccess(true);
       setLoading(false);
-      
+      toast.success("Feedback uploaded");
+
       // Store data in localStorage for homepage display
       localStorage.setItem("uploadedFeedback", JSON.stringify(response));
       

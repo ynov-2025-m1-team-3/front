@@ -2,6 +2,7 @@ import { useState } from "react";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import api from "@lib/fetch";
+import toast from "react-hot-toast";
 
 const useLogin = () => {
   const navigate = useNavigate();
@@ -20,9 +21,9 @@ const useLogin = () => {
       email,
       password,
     });
-
     if (response.error) {
       setError(response.error);
+      toast.error("Error while trying log in");
     } else {
       setError("");
     }
@@ -30,11 +31,13 @@ const useLogin = () => {
     if (response.token) {
 
       Cookies.set("token", response.token, {
-        secure: true,
-        sameSite: "Strict",
+        secure: false,
+        sameSite: "Lax",
         expires: 7,
+        path: "/",
       });
       navigate("/upload-json");
+      toast.success("Welcome")
     }
   };
 
