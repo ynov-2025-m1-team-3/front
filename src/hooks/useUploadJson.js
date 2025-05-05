@@ -107,11 +107,9 @@ const useUploadJson = () => {
       setUploadProgress(100);
       setSuccess(true);
       setLoading(false);
-      toast.success("Feedback uploaded");
-
-      // Store data in localStorage for homepage display
-      localStorage.setItem("uploadedFeedback", JSON.stringify(response));
       
+      navigate("/dashboard", { state: { data: response.data } });
+      toast.success("fichier bien envoyés à la base de données")
       return response;
     } catch (err) {
       console.error("Upload error:", err);

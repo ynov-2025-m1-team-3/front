@@ -10,7 +10,10 @@ import Dashboard from "@views/dashboard";
 const router = createBrowserRouter([
   {
     path: "/feedbackviewer",
-    element: <Homepage />,
+    element: 
+      <PrivateRoute>
+        <Homepage />
+      </PrivateRoute>,
   },
   {
     path: "/",
@@ -34,7 +37,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <Dashboard />,
+    element: 
+      <PrivateRoute>
+        <Dashboard />
+      </PrivateRoute>
+    ,
   }
 ]);
 

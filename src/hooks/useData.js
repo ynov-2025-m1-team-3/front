@@ -13,7 +13,7 @@ const useData = () => {
     try {
       setLoading(true);
       
-      // Vérifier si l"utilisateur est connecté
+      // Vérifier si l'utilisateur est connecté
       const token = Cookies.get("token");
       if (!token) {
         setError("Vous devez être connecté pour voir les données");
@@ -23,20 +23,14 @@ const useData = () => {
         return;
       }
       
-      // Headers pour l"authentification
+      // Headers pour l'authentification
       const headers = {
         Authorization: `Bearer ${token}`
       };
       
-      // Récupérer depuis localStorage ou API
-      const localData = localStorage.getItem("uploadedFeedback");
-      
-      if (localData) {
-        setFeedbacks(JSON.parse(localData));
-      } else {
-        const response = await api.get("/api/feedback", headers);
-        setFeedbacks(response);
-      }
+      // Récupérer directement depuis l'API (plus de localStorage)
+      const response = await api.get("/api/feedback", headers);
+      setFeedbacks(response);
       
       setLoading(false);
     } catch (err) {
@@ -52,21 +46,15 @@ const useData = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Fonction pour forcer le rafraîchissement des données
+  // Fonction pour rafraîchir les données
   const refreshFeedbacks = () => {
-    // Supprimer les données en cache pour forcer l"appel API
-    localStorage.removeItem("uploadedFeedback");
     fetchFeedbacks();
   };
 
   return {
     feedbacks,
-    setFeedbacks,
     loading,
-    setLoading,
     error,
-    setError,
-    fetchFeedbacks,
     refreshFeedbacks
   };
 };
