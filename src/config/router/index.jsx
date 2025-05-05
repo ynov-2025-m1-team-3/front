@@ -10,6 +10,10 @@ const router = createBrowserRouter([
     element: <Homepage />,
   },
   {
+    path: "/welcome",
+    element: <Landingpage />,
+  },
+  {
     path: "/upload-json",
     element: <Uploadpage />,
   },
