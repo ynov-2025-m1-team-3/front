@@ -3,15 +3,24 @@ import Homepage from "../../views/homepage";
 import Uploadpage from "../../views/uploadJSON";
 import Login from "../../views/auth/login";
 import Register from "../../views/auth/register";
+import PrivateRoute from "../../components/PrivateRoute";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Homepage />,
+    element:(
+      <PrivateRoute> 
+        <Homepage />
+      </PrivateRoute>
+    ),
   },
   {
     path: "/upload-json",
-    element: <Uploadpage />,
+    element: (
+      <PrivateRoute>
+        <Uploadpage />
+      </PrivateRoute>
+    ),
   },
   { 
     path: "/login",
@@ -21,7 +30,6 @@ const router = createBrowserRouter([
     path: "/register",
     element: <Register />,
   }
-
 ]);
 
 const Routes = () => {
