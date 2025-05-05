@@ -17,7 +17,7 @@ const Navbar = ({ onSearch }) => {
     <Paper
       elevation={2}
       sx={{
-        width: "70%",
+        width: "90%",
         mx: "auto",
         mt: 4,
         mb: 4,
