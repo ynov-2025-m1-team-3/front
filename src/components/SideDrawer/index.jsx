@@ -16,7 +16,7 @@ import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import UploadFileIcon from "@mui/icons-material/UploadFile";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
-import LogoutIcon from '@mui/icons-material/Logout';
+import LogoutIcon from "@mui/icons-material/Logout";
 import useLogin from "@/hooks/useLogin";
 
 export default function TemporaryDrawer() {
@@ -37,7 +37,7 @@ export default function TemporaryDrawer() {
   const drawerItems2 = [
     { text: "Upload JSON", icon: <UploadFileIcon />, route: "/upload-json" },
     { text: "Dashboard", icon: <DashboardIcon />, route: "/dashboard" },
-    { text: "FeedbackViewer", icon: <ChatBubbleIcon />, route: "/feedback" },
+    { text: "FeedbackViewer", icon: <ChatBubbleIcon />, route: "/feedbackviewer" },
   ];
 
   const DrawerList = (
