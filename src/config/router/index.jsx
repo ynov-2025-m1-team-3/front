@@ -7,10 +7,6 @@ import Landingpage from "../../views/landingpage";
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Homepage />,
-  },
-  {
     path: "/home",
     element: <Landingpage />,
   },
