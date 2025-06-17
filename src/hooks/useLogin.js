@@ -17,35 +17,38 @@ const useLogin = () => {
       setError("");
     }
 
-    const response = await api.post("/api/auth/login", {
-      email,
-      password,
-    });
-    if (response.error) {
-      setError(response.error);
-      toast.error("Error while trying log in");
-    } else {
-      setError("");
-    }
-
-    if (response.token) {
-
-      Cookies.set("token", response.token, {
-        secure: false,
-        sameSite: "Lax",
-        expires: 7,
-        path: "/",
+    try {
+      const response = await api.post("/api/auth/login", {
+        email,
+        password,
       });
-      navigate("/upload-json");
-      toast.success("Welcome")
+      if (response.error) {
+        setError(response.error);
+        toast.error("Error while trying log in");
+      } else {
+        setError("");
+      }
+
+      if (response.token) {
+        Cookies.set("token", response.token, {
+          secure: false,
+          sameSite: "Lax",
+          expires: 7,
+          path: "/",
+        });
+        navigate("/upload-json");
+        toast.success("Welcome");
+      }
+    } catch (error) {
+      toast.error(error.message);
     }
   };
 
   const logout = () => {
-    Cookies.remove("token")
-    navigate("/login")
-    toast("logout successfully")
-  }
+    Cookies.remove("token");
+    navigate("/login");
+    toast("logout successfully");
+  };
 
   return {
     email,
@@ -54,7 +57,7 @@ const useLogin = () => {
     setPassword,
     error,
     handleSubmit,
-    logout
+    logout,
   };
 };
 
