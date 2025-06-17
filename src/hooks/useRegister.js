@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import api from "@lib/fetch";
+import Cookies from "js-cookie";
 
 const useRegister = () => {
   const navigate = useNavigate();
@@ -23,12 +24,20 @@ const useRegister = () => {
       setError("");
     }
     try {
-      await api.post("/api/auth/register", {
+      const response = await api.post("/api/auth/register", {
         name,
         email,
         password,
       });
-      navigate("/dashboard");
+      if (response.token) {
+        Cookies.set("token", response.token, {
+          secure: false,
+          sameSite: "Lax",
+          expires: 7,
+          path: "/",
+        });
+      }
+      navigate("/upload-json");
       toast.success("user registered");
     } catch (error) {
       toast.error(error.message);
