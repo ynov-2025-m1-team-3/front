@@ -22,14 +22,17 @@ const useRegister = () => {
     } else {
       setError("");
     }
-    await api.post("/api/auth/register", {
-      name,
-      email,
-      password,
-    });
-
-    navigate("/login");
-    toast.success("user registered")
+    try {
+      await api.post("/api/auth/register", {
+        name,
+        email,
+        password,
+      });
+      navigate("/login");
+      toast.success("user registered");
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
 
   return {
