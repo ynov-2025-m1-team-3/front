@@ -16,7 +16,7 @@ Sentry.init({
   environment: import.meta.env.VITE_MODE || "development",
   
   // Amélioration du beforeSend pour plus de contexte
-  beforeSend(event, hint) {
+  beforeSend(event) {
     console.log("Sentry event:", event);
     
     // Ajouter des tags personnalisés
