@@ -1,5 +1,4 @@
 const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
-
 async function request(endpoint, { method = "GET", body, headers = {} } = {}) {
   const url = `${BASE_URL}${endpoint}`;
 
