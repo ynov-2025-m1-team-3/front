@@ -15,14 +15,13 @@ import LoginIcon from "@mui/icons-material/Login";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import UploadFileIcon from "@mui/icons-material/UploadFile";
 import DashboardIcon from "@mui/icons-material/Dashboard";
-import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
 import LogoutIcon from "@mui/icons-material/Logout";
 import useLogin from "@/hooks/useLogin";
 
 export default function TemporaryDrawer() {
   const [open, setOpen] = React.useState(false);
   const navigate = useNavigate();
-  const { logout} = useLogin();
+  const { logout } = useLogin();
 
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
@@ -37,7 +36,6 @@ export default function TemporaryDrawer() {
   const drawerItems2 = [
     { text: "Upload JSON", icon: <UploadFileIcon />, route: "/upload-json" },
     { text: "Dashboard", icon: <DashboardIcon />, route: "/dashboard" },
-    { text: "FeedbackViewer", icon: <ChatBubbleIcon />, route: "/feedbackviewer" },
   ];
 
   const DrawerList = (
@@ -74,7 +72,9 @@ export default function TemporaryDrawer() {
         ))}
         <ListItem disablePadding>
           <ListItemButton onClick={logout}>
-            <ListItemIcon sx={{ color: "#20b4dc" }} ><LogoutIcon /></ListItemIcon>
+            <ListItemIcon sx={{ color: "#20b4dc" }}>
+              <LogoutIcon />
+            </ListItemIcon>
             <ListItemText primary="Logout" sx={{ color: "#20b4dc" }} />
           </ListItemButton>
         </ListItem>
