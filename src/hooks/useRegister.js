@@ -36,9 +36,9 @@ const useRegister = () => {
           expires: 7,
           path: "/",
         });
+        navigate("/upload-json");
+        toast.success("user registered");
       }
-      navigate("/upload-json");
-      toast.success("user registered");
     } catch (error) {
       toast.error(error.message);
     }
