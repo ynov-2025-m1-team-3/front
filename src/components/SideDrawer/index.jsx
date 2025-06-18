@@ -27,13 +27,7 @@ export default function TemporaryDrawer() {
     setOpen(newOpen);
   };
 
-  const drawerItems1 = [
-    { text: "Welcome", icon: <CottageIcon />, route: "/" },
-    { text: "Login", icon: <LoginIcon />, route: "/login" },
-    { text: "Register", icon: <PersonAddIcon />, route: "/register" },
-  ];
-
-  const drawerItems2 = [
+  const drawerItems = [
     { text: "Upload JSON", icon: <UploadFileIcon />, route: "/upload-json" },
     { text: "Dashboard", icon: <DashboardIcon />, route: "/dashboard" },
   ];
@@ -41,23 +35,7 @@ export default function TemporaryDrawer() {
   const DrawerList = (
     <Box sx={{ width: 250 }} role="presentation">
       <List>
-        {drawerItems1.map(({ text, icon, route }) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton
-              onClick={() => {
-                navigate(route);
-                setOpen(false);
-              }}
-            >
-              <ListItemIcon sx={{ color: "#20b4dc" }}>{icon}</ListItemIcon>
-              <ListItemText primary={text} sx={{ color: "#20b4dc" }} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {drawerItems2.map(({ text, icon, route }) => (
+        {drawerItems.map(({ text, icon, route }) => (
           <ListItem key={text} disablePadding>
             <ListItemButton
               onClick={() => {
@@ -86,7 +64,11 @@ export default function TemporaryDrawer() {
     <Box>
       <IconButton
         onClick={toggleDrawer(true)}
-        sx={{ color: "#20b4dc", ml: 1 }}
+        sx={{
+          color: "#20b4dc",
+          ml: 1,
+          visibility: open ? "hidden" : "visible",
+        }}
         edge="start"
         aria-label="menu"
       >
