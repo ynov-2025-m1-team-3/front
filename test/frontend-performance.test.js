@@ -99,7 +99,7 @@ export function browserTest() {
     testUserInteractions(page);
     
   } catch (error) {
-    console.error("Browser test error:", error);
+    console.error("Browser test error:", error , sentryErrorRate);
     errorRate.add(1);
   } finally {
     page.close();
