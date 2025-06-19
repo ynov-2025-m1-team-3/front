@@ -92,7 +92,6 @@ const useUploadJson = () => {
     setSuccess(false);
 
     try {
-      const dataToSend = Array.isArray(fileContent) ? fileContent : [fileContent];
       
       setUploadProgress(30);
       
@@ -101,7 +100,7 @@ const useUploadJson = () => {
         Authorization: `Bearer ${token}`
       };
       
-      const response = await api.post("/api/feedback", dataToSend, headers);
+      const response = await api.post("/api/feedback", fileContent, headers);
 
       
       setUploadProgress(100);
