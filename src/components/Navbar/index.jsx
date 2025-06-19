@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { Box, TextField, IconButton, Paper, } from "@mui/material";
+import { Box, TextField, IconButton, Paper } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import WarningIcon from "@mui/icons-material/Warning";
-import logo from "../../assets/logo.png"; 
+import logo from "../../assets/logo.png";
 import SideDrawer from "@/components/SideDrawer";
 
 const Navbar = ({ onSearch }) => {
@@ -20,7 +20,7 @@ const Navbar = ({ onSearch }) => {
       sx={{
         width: "90%",
         mx: "auto",
-        mt: 4,
+        mt: 0,
         mb: 4,
         px: 2,
         py: 1,
@@ -31,7 +31,7 @@ const Navbar = ({ onSearch }) => {
       }}
     >
       <SideDrawer />
-      <Box component="img" src={logo} alt="logo" sx={{ height: 30 }}/>
+      <Box component="img" src={logo} alt="logo" sx={{ height: 30 }} />
       <Box sx={{ flex: 1, px: 2 }}>
         <TextField
           fullWidth
