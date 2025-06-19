@@ -9,12 +9,14 @@ import PieChartIcon from "@mui/icons-material/PieChart";
 import TableChartIcon from "@mui/icons-material/TableChart";
 import * as Sentry from "@sentry/react";
 import { SentryLogger } from "@/lib/sentryLogger"; 
+import toast from "react-hot-toast";
 
 const Dashboard = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const { feedbacks, loading, error } = useData();
+  const { feedbacks, loading, error, deleteFeedbacksByUserId } = useData();
   const [dataCards, setDataCards] = useState([]);
   const [tabValue, setTabValue] = useState(0);
+  const [deleteLoading, setDeleteLoading] = useState(false);
 
   
   // Monitoring Sentry
@@ -92,20 +94,51 @@ const Dashboard = () => {
     card.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-const testSentry = () => {
-  console.log("Test Sentry déclenché");
-  
-  // Test 1: Capture d'exception
-  Sentry.captureException(new Error("Test Sentry Exception"));
-  
-  // Test 2: Message simple
-  Sentry.captureMessage("Test Sentry Message", "info");
-  
-  // Test 3: Erreur JavaScript
-  setTimeout(() => {
-    throw new Error("Test Sentry Uncaught Error");
-  }, 100);
-};
+  const testDeleteFeedback = async () => {
+    if (deleteLoading) return;
+    
+    const confirmed = window.confirm(
+      "Êtes-vous sûr de vouloir supprimer TOUS vos feedbacks ? Cette action est irréversible."
+    );
+    
+    if (!confirmed) return;
+    
+    setDeleteLoading(true);
+    
+    try {
+      SentryLogger.logUserAction("delete_all_feedbacks_clicked", "Dashboard", {
+        feedbacks_count: feedbacks.length
+      });
+      
+      const result = await deleteFeedbacksByUserId();
+      
+           if (result.success) {
+        toast.success(result.message);
+        SentryLogger.logInfo("All feedbacks deleted successfully", {
+          component: "Dashboard",
+          action: "delete_all_feedbacks"
+        });
+      } else {
+        toast.error(result.message);
+        SentryLogger.logError(new Error(result.message), {
+          component: "Dashboard",
+          action: "delete_all_feedbacks",
+          error_type: "deletion_failed"
+        });
+      }
+    } catch (err) {
+      console.error("Delete error:", err);
+      toast.error("Une erreur s'est produite lors de la suppression");
+      
+      SentryLogger.logError(err, {
+        component: "Dashboard",
+        action: "delete_all_feedbacks",
+        error_type: "unexpected_error"
+      });
+    } finally {
+      setDeleteLoading(false);
+    }
+  };
 
  if (loading) {
     return (
@@ -153,10 +186,21 @@ const testSentry = () => {
   return (
     <Box display="flex" flexDirection="column" alignItems="center">
       <Navbar onSearch={setSearchTerm} />
-      
-      {/* ✅ Bouton de test Sentry amélioré */}
       <Box sx={{ mb: 2 }}>
-        <button onClick={testSentry}>Break the world</button>
+        <Button 
+          variant="outlined" 
+          color="error"
+          onClick={testDeleteFeedback}
+          disabled={deleteLoading || feedbacks.length === 0}
+          sx={{ 
+            textTransform: "none",
+            "&:hover": {
+              backgroundColor: "#ffebee"
+            }
+          }}
+        >
+          {deleteLoading ? "Suppression..." : `Supprimer tous les feedbacks (${feedbacks.length})`}
+        </Button>
       </Box>
 
       <Box sx={{ width: "100%", maxWidth: "lg", px: 2, mt: 2 }}>
