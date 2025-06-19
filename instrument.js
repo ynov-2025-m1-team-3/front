@@ -17,7 +17,6 @@ Sentry.init({
   
   // Amélioration du beforeSend pour plus de contexte
   beforeSend(event) {
-    console.log("Sentry event:", event);
     
     // Ajouter des tags personnalisés
     event.tags = {
