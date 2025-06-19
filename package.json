@@ -8,7 +8,11 @@
     "build": "vite build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "k6:frontend": "k6 run test/frontend-performance.test.js",
+    "k6:sentry": "k6 run test/sentry-monitoring.test.js",
+    "k6:charts": "k6 run test/charts-performance.test.js",
+    "k6:all": "k6 run test/frontend-performance.test.js && k6 run test/sentry-monitoring.test.js && k6 run test/charts-performance.test.js"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
