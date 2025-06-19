@@ -15,7 +15,6 @@ const useUploadJson = () => {
   const [dragOver, setDragOver] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
 
-  
   // Check for authentication when component mounts
   useEffect(() => {
     const token = Cookies.get("token");
@@ -36,14 +35,14 @@ const useUploadJson = () => {
   const handleFileRead = (file) => {
     resetState();
     setFileName(file.name);
-    
+
     const reader = new FileReader();
     reader.onload = async (e) => {
       try {
         const content = JSON.parse(e.target.result);
         setFileContent(content);
       } catch (err) {
-        setError("Erreur: Le fichier n'est pas un JSON valide" , err.message);
+        setError("Erreur: Le fichier n'est pas un JSON valide", err.message);
       }
     };
     reader.readAsText(file);
@@ -69,12 +68,21 @@ const useUploadJson = () => {
     }
   };
 
+  const removeDuplicates = (array) => {
+    const seen = new Set();
+    return array.filter((item) => {
+      const key = JSON.stringify(item);
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+  };
+
   const uploadJson = async () => {
     if (!fileContent) {
       setError("Aucun fichier à envoyer");
       return;
     }
-
 
     // Check for authentication token
     const token = Cookies.get("token");
@@ -92,29 +100,31 @@ const useUploadJson = () => {
     setSuccess(false);
 
     try {
-      const dataToSend = Array.isArray(fileContent) ? fileContent : [fileContent];
-      
+      let dataToSend = Array.isArray(fileContent) ? fileContent : [fileContent];
+      dataToSend = removeDuplicates(dataToSend).slice(0, 500);
+
       setUploadProgress(30);
-      
+
       // Add token to request headers
       const headers = {
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       };
-      
+
       const response = await api.post("/api/feedback", dataToSend, headers);
 
-      
       setUploadProgress(100);
       setSuccess(true);
       setLoading(false);
-      
+
       navigate("/dashboard", { state: { data: response.data } });
-      toast.success("fichier bien envoyés à la base de données")
+      toast.success("fichier bien envoyés à la base de données");
       return response;
     } catch (err) {
       console.error("Upload error:", err);
 
-      setError(err.message || "Une erreur s'est produite lors de l'envoi des données");
+      setError(
+        err.message || "Une erreur s'est produite lors de l'envoi des données"
+      );
       setLoading(false);
       setUploadProgress(0);
     }
@@ -131,7 +141,7 @@ const useUploadJson = () => {
     setDragOver,
     handleDrop,
     handleFileChange,
-    uploadJson
+    uploadJson,
   };
 };
 
