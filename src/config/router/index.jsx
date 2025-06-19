@@ -1,19 +1,27 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
-import Homepage from "@views/homepage";
-import Uploadpage from "@views/uploadJSON";
-import Login from "@views/auth/login";
-import Register from "@views/auth/register";
-import PrivateRoute from "@components/PrivateRoute";
-import Landingpage from "@views/landingpage";
-import Dashboard from "@views/dashboard";
+import { lazy, Suspense } from "react";
+
+const Homepage = lazy(() => import("@/views/homepage"));
+const Uploadpage = lazy(() => import("@/views/uploadJSON"));
+const Login = lazy(() => import("@/views/auth/login"));
+const Register = lazy(() => import("@/views/auth/register"));
+const Landingpage = lazy(() => import("@/views/landingpage"));
+const Dashboard = lazy(() => import("@/views/dashboard"));
+
+import PrivateRoute from "@/components/PrivateRoute";
+
+const withSuspense = (component) => (
+  <Suspense fallback={<div>Chargement...</div>}>{component}</Suspense>
+);
 
 const router = createBrowserRouter([
   {
     path: "/feedbackviewer",
-    element: 
+    element: (
       <PrivateRoute>
         <Homepage />
-      </PrivateRoute>,
+      </PrivateRoute>
+    ),
   },
   {
     path: "/",
@@ -27,7 +35,7 @@ const router = createBrowserRouter([
       </PrivateRoute>
     ),
   },
-  { 
+  {
     path: "/login",
     element: <Login />,
   },
@@ -37,12 +45,12 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: 
+    element: (
       <PrivateRoute>
         <Dashboard />
       </PrivateRoute>
-    ,
-  }
+    ),
+  },
 ]);
 
 const Routes = () => {
