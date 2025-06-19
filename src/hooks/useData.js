@@ -159,7 +159,53 @@ const useData = () => {
       setLoading(false);
     }
   };
+  const deleteFeedbacksByUserId = async () => {
+    try {
+      const token = Cookies.get("token");
+      if (!token) {
+        throw new Error("Vous devez être connecté pour supprimer les feedbacks");
+      }
 
+      const headers = {
+        Authorization: `Bearer ${token}`
+      };
+
+      SentryLogger.logInfo("Starting feedbacks deletion for user", {
+        component: "useData",
+        action: "delete_feedbacks_by_user_id"
+      });
+
+      // Use POST method as defined in your routes
+      const response = await api.post("/api/feedback/delete/user", {}, headers);
+      
+      SentryLogger.logInfo("Feedbacks deleted successfully", {
+        component: "useData",
+        response: response
+      });
+
+      // Refresh the feedbacks list after deletion
+      await fetchFeedbacks();
+      
+      return {
+        success: true,
+        message: response.message || "Tous les feedbacks ont été supprimés avec succès"
+      };
+      
+    } catch (err) {
+      console.error("Error deleting feedbacks:", err);
+      
+      SentryLogger.logError(err, {
+        component: "useData",
+        action: "delete_feedbacks_by_user_id",
+        error_message: err.message
+      });
+      
+      return {
+        success: false,
+        message: err.message || "Une erreur s'est produite lors de la suppression"
+      };
+    }
+  };
   // Charger les données au montage du composant
   useEffect(() => {
     SentryLogger.logInfo("useData hook mounted", {
@@ -183,7 +229,8 @@ const useData = () => {
     feedbacks,
     loading,
     error,
-    refreshFeedbacks
+    refreshFeedbacks,
+    deleteFeedbacksByUserId,
   };
 };
 
