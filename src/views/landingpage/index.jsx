@@ -68,6 +68,7 @@ const Landingpage = () => {
           component="img"
           src="/bg-home.webp"
           alt="Design inspiration"
+          loading="lazy"
           sx={{
             width: "100%",
             borderRadius: "100px",

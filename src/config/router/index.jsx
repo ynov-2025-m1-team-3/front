@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
-import { lazy, Suspense } from "react";
+import { lazy } from "react";
 
 const Homepage = lazy(() => import("@/views/homepage"));
 const Uploadpage = lazy(() => import("@/views/uploadJSON"));
@@ -9,10 +9,6 @@ const Landingpage = lazy(() => import("@/views/landingpage"));
 const Dashboard = lazy(() => import("@/views/dashboard"));
 
 import PrivateRoute from "@/components/PrivateRoute";
-
-const withSuspense = (component) => (
-  <Suspense fallback={<div>Chargement...</div>}>{component}</Suspense>
-);
 
 const router = createBrowserRouter([
   {

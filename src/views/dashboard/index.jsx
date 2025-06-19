@@ -29,7 +29,9 @@ const Dashboard = () => {
     SentryLogger.logInfo("Dashboard component mounted", {
       component: "Dashboard",
     });
+  }, []);
 
+  useEffect(() => {
     if (feedbacks && feedbacks.length > 0) {
       try {
         const sentimentData = [

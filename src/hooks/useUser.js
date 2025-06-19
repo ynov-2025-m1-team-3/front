@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import api from "@lib/fetch";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
@@ -9,7 +9,7 @@ const useUser = () => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  const fetchCurrentUser = async () => {
+  const fetchCurrentUser = useCallback(async () => {
     try {
       setLoading(true);
 
@@ -46,7 +46,7 @@ const useUser = () => {
         navigate("/login");
       }
     }
-  };
+  }, [navigate]);
 
   // Charger les données utilisateur au montage du composant
   useEffect(() => {
