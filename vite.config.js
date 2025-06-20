@@ -29,20 +29,15 @@ export default defineConfig({
       "@lib": path.resolve(__dirname, "./src/lib"),
     },
   },  build: {
-    sourcemap: true,
+    sourcemap: false, // Désactiver les sourcemaps en production pour réduire la taille
     chunkSizeWarningLimit: 1000,
     rollupOptions: {
       output: {
-        // Configuration simplifiée pour éviter les erreurs de chunks
-        manualChunks: {
-          "vendor": ["react", "react-dom"],
-          "router": ["react-router-dom"],
-          "mui": ["@mui/material", "@mui/icons-material"],
-          "mui-x": ["@mui/x-charts", "@mui/x-data-grid"],
-        },
-        // Assurer que les chunks ont des noms prévisibles
-        chunkFileNames: "assets/[name]-[hash].js",
-        entryFileNames: "assets/[name]-[hash].js",
+        // Configuration très simple pour éviter les erreurs de chunks
+        manualChunks: undefined, // Laisser Vite gérer automatiquement
+        // Noms de fichiers simples et prévisibles
+        chunkFileNames: "js/[name]-[hash].js",
+        entryFileNames: "js/[name]-[hash].js",
         assetFileNames: "assets/[name]-[hash].[ext]"
       }
     }

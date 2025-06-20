@@ -49,7 +49,7 @@ const Landingpage = () => {
             borderRadius: 2,
             backgroundColor: "#20b4dc",
           }}
-          onClick={() => navigate("/register")}
+          onClick={() => navigate("/login")}
         >
           LOGIN
         </Button>
