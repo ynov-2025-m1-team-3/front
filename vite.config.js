@@ -31,11 +31,19 @@ export default defineConfig({
   },  build: {
     sourcemap: true,
     chunkSizeWarningLimit: 1000,
-    rollupOptions: {      output: {
+    rollupOptions: {
+      output: {
+        // Configuration simplifiée pour éviter les erreurs de chunks
         manualChunks: {
-          "mui": ["@mui/material", "@mui/icons-material", "@mui/x-charts", "@mui/x-data-grid"],
-          "react-vendor": ["react", "react-dom", "react-router-dom"],
-        }
+          "vendor": ["react", "react-dom"],
+          "router": ["react-router-dom"],
+          "mui": ["@mui/material", "@mui/icons-material"],
+          "mui-x": ["@mui/x-charts", "@mui/x-data-grid"],
+        },
+        // Assurer que les chunks ont des noms prévisibles
+        chunkFileNames: "assets/[name]-[hash].js",
+        entryFileNames: "assets/[name]-[hash].js",
+        assetFileNames: "assets/[name]-[hash].[ext]"
       }
     }
   },

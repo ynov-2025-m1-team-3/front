@@ -1,60 +1,147 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { lazy } from "react";
+import { lazy, Suspense } from "react";
 
-const Homepage = lazy(() => import("@/views/homepage"));
-const Uploadpage = lazy(() => import("@/views/uploadJSON"));
-const Login = lazy(() => import("@/views/auth/login"));
-const Register = lazy(() => import("@/views/auth/register"));
-const Landingpage = lazy(() => import("@/views/landingpage"));
-const Dashboard = lazy(() => import("@/views/dashboard"));
-const TestPage = lazy(() => import("@/views/test"));
-const NotFoundPage = lazy(() => import("@/views/notfound"));
+// Lazy loading avec fallback plus robuste
+const Homepage = lazy(() => 
+  import("@/views/homepage").catch(() => ({
+    default: () => <div>Erreur de chargement de la page d'accueil</div>
+  }))
+);
+
+const Uploadpage = lazy(() => 
+  import("@/views/uploadJSON").catch(() => ({
+    default: () => <div>Erreur de chargement de la page upload</div>
+  }))
+);
+
+const Login = lazy(() => 
+  import("@/views/auth/login").catch(() => ({
+    default: () => <div>Erreur de chargement de la page de connexion</div>
+  }))
+);
+
+const Register = lazy(() => 
+  import("@/views/auth/register").catch(() => ({
+    default: () => <div>Erreur de chargement de la page d'inscription</div>
+  }))
+);
+
+const Landingpage = lazy(() => 
+  import("@/views/landingpage").catch(() => ({
+    default: () => <div>Erreur de chargement de la page d'accueil</div>
+  }))
+);
+
+const Dashboard = lazy(() => 
+  import("@/views/dashboard").catch(() => ({
+    default: () => <div>Erreur de chargement du tableau de bord</div>
+  }))
+);
+
+const TestPage = lazy(() => 
+  import("@/views/test").catch(() => ({
+    default: () => <div>Erreur de chargement de la page de test</div>
+  }))
+);
+
+const NotFoundPage = lazy(() => 
+  import("@/views/notfound").catch(() => ({
+    default: () => <div>Page non trouvée</div>
+  }))
+);
 
 import PrivateRoute from "@/components/PrivateRoute";
+
+// Composant de loading
+const LoadingFallback = () => (
+  <div style={{ 
+    display: "flex", 
+    justifyContent: "center", 
+    alignItems: "center", 
+    height: "100vh",
+    fontFamily: "Arial, sans-serif"
+  }}>
+    <div>⏳ Chargement...</div>
+  </div>
+);
+
+// Wrapper pour Suspense
+const SuspenseWrapper = ({ children }) => (
+  <Suspense fallback={<LoadingFallback />}>
+    {children}
+  </Suspense>
+);
 
 const router = createBrowserRouter([
   {
     path: "/feedbackviewer",
     element: (
-      <PrivateRoute>
-        <Homepage />
-      </PrivateRoute>
+      <SuspenseWrapper>
+        <PrivateRoute>
+          <Homepage />
+        </PrivateRoute>
+      </SuspenseWrapper>
     ),
   },
   {
     path: "/",
-    element: <Landingpage />,
+    element: (
+      <SuspenseWrapper>
+        <Landingpage />
+      </SuspenseWrapper>
+    ),
   },
   {
     path: "/upload-json",
     element: (
-      <PrivateRoute>
-        <Uploadpage />
-      </PrivateRoute>
+      <SuspenseWrapper>
+        <PrivateRoute>
+          <Uploadpage />
+        </PrivateRoute>
+      </SuspenseWrapper>
     ),
   },
   {
     path: "/login",
-    element: <Register />,
+    element: (
+      <SuspenseWrapper>
+        <Login />
+      </SuspenseWrapper>
+    ),
   },
   {
     path: "/register",
-    element: <Login />,
+    element: (
+      <SuspenseWrapper>
+        <Register />
+      </SuspenseWrapper>
+    ),
   },
   {
     path: "/dashboard",
     element: (
-      <PrivateRoute>
-        <Dashboard />
-      </PrivateRoute>
+      <SuspenseWrapper>
+        <PrivateRoute>
+          <Dashboard />
+        </PrivateRoute>
+      </SuspenseWrapper>
     ),
-  },  {
+  },
+  {
     path: "/test",
-    element: <TestPage />,
+    element: (
+      <SuspenseWrapper>
+        <TestPage />
+      </SuspenseWrapper>
+    ),
   },
   {
     path: "*",
-    element: <NotFoundPage />,
+    element: (
+      <SuspenseWrapper>
+        <NotFoundPage />
+      </SuspenseWrapper>
+    ),
   },
 ]);
 
