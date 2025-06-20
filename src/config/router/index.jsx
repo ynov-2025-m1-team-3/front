@@ -34,11 +34,11 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/caca",
+    path: "/register",
     element: <Login />,
   },
   {
-    path: "/register",
+    path: "/login",
     element: <Register />,
   },
   {
