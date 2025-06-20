@@ -1,4 +1,4 @@
-import { sentryVitePlugin } from "@sentry/vite-plugin";
+// import { sentryVitePlugin } from "@sentry/vite-plugin"; // Temporairement désactivé
 /* eslint-disable no-undef */
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
@@ -8,15 +8,16 @@ import path from "path";
 export default defineConfig({
   plugins: [
     react(),
-    sentryVitePlugin({
-      org: "ynov-5h",
-      project: "vite",
-    }),
-    sentryVitePlugin({
-      org: "ynov-5h",
-      project: "vite",
-      authToken: process.env.VITE_SENTRY_AUTH_TOKEN,
-    }),
+    // Sentry temporairement désactivé pour éviter les erreurs de build sur Render
+    // sentryVitePlugin({
+    //   org: "ynov-5h",
+    //   project: "vite",
+    // }),
+    // sentryVitePlugin({
+    //   org: "ynov-5h",
+    //   project: "vite",
+    //   authToken: process.env.VITE_SENTRY_AUTH_TOKEN,
+    // }),
   ],
 
   resolve: {
@@ -28,8 +29,16 @@ export default defineConfig({
       "@lib": path.resolve(__dirname, "./src/lib"),
     },
   },
-
   build: {
     sourcemap: true,
+    chunkSizeWarningLimit: 1000,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'mui': ['@mui/material', '@mui/icons-material', '@mui/x-charts', '@mui/x-data-grid'],
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+        }
+      }
+    }
   },
 });

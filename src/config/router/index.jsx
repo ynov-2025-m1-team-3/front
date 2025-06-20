@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { lazy } from "react";
 
 const Homepage = lazy(() => import("@/views/homepage"));
