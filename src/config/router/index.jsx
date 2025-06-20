@@ -7,6 +7,8 @@ const Login = lazy(() => import("@/views/auth/login"));
 const Register = lazy(() => import("@/views/auth/register"));
 const Landingpage = lazy(() => import("@/views/landingpage"));
 const Dashboard = lazy(() => import("@/views/dashboard"));
+const TestPage = lazy(() => import("@/views/test"));
+const NotFoundPage = lazy(() => import("@/views/notfound"));
 
 import PrivateRoute from "@/components/PrivateRoute";
 
@@ -46,6 +48,13 @@ const router = createBrowserRouter([
         <Dashboard />
       </PrivateRoute>
     ),
+  },  {
+    path: "/test",
+    element: <TestPage />,
+  },
+  {
+    path: "*",
+    element: <NotFoundPage />,
   },
 ]);
 

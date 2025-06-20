@@ -1,0 +1,15 @@
+# Configuration pour le déploiement sur Render
+# Ce fichier indique à Render comment servir notre SPA React
+
+# Toutes les routes doivent être redirigées vers index.html
+# pour que React Router puisse gérer le routage côté client
+/*    /index.html   200
+
+# Configuration alternative pour les API calls (si nécessaire)
+# /api/*  https://votre-api.onrender.com/api/:splat  200
+
+# Headers de sécurité (optionnel)
+# /*
+#   X-Frame-Options: DENY
+#   X-Content-Type-Options: nosniff
+#   Referrer-Policy: strict-origin-when-cross-origin

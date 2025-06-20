@@ -28,17 +28,27 @@ export default defineConfig({
       "@hooks": path.resolve(__dirname, "./src/hooks"),
       "@lib": path.resolve(__dirname, "./src/lib"),
     },
-  },
-  build: {
+  },  build: {
     sourcemap: true,
     chunkSizeWarningLimit: 1000,
-    rollupOptions: {
-      output: {
+    rollupOptions: {      output: {
         manualChunks: {
-          'mui': ['@mui/material', '@mui/icons-material', '@mui/x-charts', '@mui/x-data-grid'],
-          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          "mui": ["@mui/material", "@mui/icons-material", "@mui/x-charts", "@mui/x-data-grid"],
+          "react-vendor": ["react", "react-dom", "react-router-dom"],
         }
       }
     }
+  },
+  
+  // Configuration pour le serveur de développement
+  server: {
+    historyApiFallback: true,
+  },
+  
+  // Configuration pour la preview
+  preview: {
+    port: 3000,
+    host: true,
+    historyApiFallback: true,
   },
 });
