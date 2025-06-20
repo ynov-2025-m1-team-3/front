@@ -51,6 +51,8 @@ npm run build && npm run preview
 
 ### 2. Déploiement sur Render
 
+#### Option A : Static Site (plus simple mais peut ne pas fonctionner pour SPA)
+
 1. **Connectez votre dépôt GitHub à Render**
 2. **Configurez le service :**
    - Type : Static Site
@@ -58,8 +60,24 @@ npm run build && npm run preview
    - Publish Directory : `dist`
    - Root Directory : `front` (si votre projet est dans un sous-dossier)
 
-3. **Variables d'environnement** (si nécessaires) :
-   - Ajoutez vos variables d'environnement dans le dashboard Render
+⚠️ **Si vous obtenez des erreurs 404 sur les routes, utilisez l'Option B**
+
+#### Option B : Web Service avec serveur Express (RECOMMANDÉ pour SPA)
+
+1. **Connectez votre dépôt GitHub à Render**
+2. **Configurez le service :**
+   - Type : **Web Service** (pas Static Site)
+   - Build Command : `npm install && npm run build`
+   - Start Command : `node server.js`
+   - Root Directory : `front`
+   
+3. **Fichiers ajoutés automatiquement :**
+   - `server.js` : Serveur Express pour gérer le routage SPA
+   - `server-package.json` : Dépendances du serveur
+
+4. **Variables d'environnement** (si nécessaires) :
+   - PORT : automatiquement défini par Render
+   - Ajoutez vos autres variables dans le dashboard
 
 ### 3. Tests Post-Déploiement
 
