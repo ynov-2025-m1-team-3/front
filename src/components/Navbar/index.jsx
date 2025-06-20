@@ -15,11 +15,11 @@ const Navbar = ({ onSearch }) => {
 
   return (
     <Paper
-      elevation={2}
+      elevation={0}
       sx={{
         width: "90%",
         mx: "auto",
-        mt: 4,
+        mt: 0,
         mb: 4,
         px: 2,
         py: 1,

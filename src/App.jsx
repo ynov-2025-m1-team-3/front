@@ -1,17 +1,14 @@
-import Routes from "./config/router"
-import "./App.css"
+import Routes from "./config/router";
+import "./App.css";
 import { Toaster } from "react-hot-toast";
 
 function App() {
-  return ( 
+  return (
     <>
-      <Toaster 
-        position="top-left" 
-        reverseOrder={true}
-      />
+      <Toaster position="top-left" reverseOrder={true} />
       <Routes />
     </>
-  ); 
+  );
 }
 
 export default App;
